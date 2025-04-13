@@ -1,67 +1,45 @@
 import React from 'react';
-import { View, Text, Button, Image, ScrollView, StyleSheet } from 'react-native';
+import {
+  HomeContainer,
+  Navbar,
+  Logo,
+  NavLinks,
+  NavButtons,
+  Button,
+  HeroSection,
+  Subtitle,
+  Title,
+  CTAButton
+} from './HomeScreen.styles';
 
-const oncaImage = require('../../assets/images/onca.jpg');
-
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao Zoológico de Brasília</Text>
+    <HomeContainer>
+      <Navbar>
+        <Logo>
+          <span>ZOOLÓGICO</span>
+          <span>DE BRASÍLIA</span>
+        </Logo>
+        <NavLinks>
+          <a href="#">MAPA INTERATIVO</a>
+          <a href="#">Os ANIMAIS DO ZOOLOGICO</a>
+          <a href="#">HISTÓRIAS</a>
+          <a href="#">EDUCAÇÃO</a>
+        </NavLinks>
+        <NavButtons>
+          <Button variant="outline">CONSERVAÇÃO</Button>
+        </NavButtons>
+      </Navbar>
 
-      {}
-      <Image 
-        source={oncaImage} 
-        style={styles.image}
-        onError={() => console.log("Erro ao carregar imagem")}
-      />
-
-      <View style={styles.buttonContainer}>
-        <Button title="Explorar Animais" onPress={() => navigation.navigate('Animal')} color="#007AFF" />
-        <Button title="Eventos" onPress={() => navigation.navigate('Events')} color="#34C759" />
-        <Button title="Doações" onPress={() => navigation.navigate('Donation')} color="#FF9500" />
-        <Button title="Educação Ambiental" onPress={() => navigation.navigate('Education')} color="#AF52DE" />
-      </View>
-    </ScrollView>
+      <HeroSection>
+        <Subtitle>
+          Visitas ilimitadas ao Zoológico de Brasília, durante todo o ano
+        </Subtitle>
+        <Title>Apoie o Zoológico</Title>
+        <CTAButton>APOIE O ZOOLOGICO</CTAButton>
+      </HeroSection>
+    </HomeContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#F5F5F5',
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-    color: '#333',
-  },
-  image: {
-    width: 300,
-    height: 200,
-    marginBottom: 20,
-    borderRadius: 10,
-  },
-  imagePlaceholder: {
-    width: 300,
-    height: 200,
-    backgroundColor: '#CCCCCC',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    borderRadius: 10,
-  },
-  placeholderText: {
-    color: '#666',
-    fontSize: 16,
-  },
-  buttonContainer: {
-    width: '100%',
-    gap: 10,
-  },
-});
 
 export default HomeScreen;

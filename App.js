@@ -13,7 +13,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Zoológico de Brasília' }} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
         <Stack.Screen name="Animal" component={AnimalScreen} options={{ title: 'Informações do Animal' }} />
         <Stack.Screen name="Events" component={EventsScreen} options={{ title: 'Eventos' }} />
         <Stack.Screen name="Donation" component={DonationScreen} options={{ title: 'Doações' }} />
