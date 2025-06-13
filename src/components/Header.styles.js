@@ -14,7 +14,7 @@ export const Navbar = styled.View`
   elevation: 8;
 
   position: absolute;
-  top: ${Platform.OS === "ios" ? "80px" : "20px"};
+  top: ${Platform.OS === "ios" ? "70px" : "20px"};
   left: 20px;
   right: 20px;
   max-height: 90px;

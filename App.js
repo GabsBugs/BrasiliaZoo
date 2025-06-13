@@ -13,6 +13,7 @@ import CachorroMatoDetails from "./src/screens/CachorroMatoDetails";
 
 import Map from "./src/screens/Map";           
 import Stories from "./src/screens/Stories";  
+import PlanVisit from "./src/screens/PlanVisit";  
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name="Map" component={Map} />              
         <Stack.Screen name="Animal" component={AnimalScreen} />
         <Stack.Screen name="Stories" component={Stories} />
+        <Stack.Screen name="PlanVisit" component={PlanVisit} />
         <Stack.Screen name="Events" component={EventsScreen} />
         <Stack.Screen name="Donation" component={DonationScreen} />
         <Stack.Screen name="Education" component={EducationScreen} />

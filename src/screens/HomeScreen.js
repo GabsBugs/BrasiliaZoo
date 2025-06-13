@@ -58,6 +58,8 @@ const HomeScreen = () => {
   const [showNews, setShowNews] = useState(true);
   const navigation = useNavigation();
 
+
+
   const [fontsLoaded] = useFonts({
     MontserratSemiBold: Montserrat_600SemiBold,
     MontserratRegular: Montserrat_400Regular,
@@ -83,6 +85,14 @@ const HomeScreen = () => {
     navigation.navigate("Yaza");
   };
 
+  const handlePlanVisitClick = () => {
+  navigation.navigate("PlanVisit"); 
+};
+
+const handleKnowAnimalsClick = () => {
+  navigation.navigate("Animal");  
+};
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <Header />
@@ -105,12 +115,13 @@ const HomeScreen = () => {
           </Title>
 
           <ButtonContainer>
-            <CTAButton>
+            <CTAButton onPress={handlePlanVisitClick}>
               <ButtonTextWhite fontsLoaded={fontsLoaded}>
                 PLANEJE SUA VISITA
               </ButtonTextWhite>
             </CTAButton>
-            <SecondaryButton>
+
+            <SecondaryButton onPress={handleKnowAnimalsClick}>
               <ButtonTextBlack fontsLoaded={fontsLoaded}>
                 CONHEÇA NOSSOS ANIMAIS
               </ButtonTextBlack>
@@ -118,7 +129,6 @@ const HomeScreen = () => {
           </ButtonContainer>
         </HeroSection>
 
-        {/* Memorial Yaza */}
         <ZooSection $memorial>
           <ZooTitle>EM MEMÓRIA DE YAZA</ZooTitle>
           <MemorialSection>
@@ -147,7 +157,6 @@ const HomeScreen = () => {
 
         <ZooDivider />
 
-        {/* Seção 1 - Animais */}
         <ZooSection>
           <ZooTitle>CONECTE-SE COM O MUNDO NATURAL</ZooTitle>
           <ZooText>
@@ -176,7 +185,6 @@ const HomeScreen = () => {
           </HighlightSection>
         </ZooSection>
 
-        {/* Seção Destaques */}
         <ZooSection>
           <ZooTitle>Não Perca Estas Experiências!</ZooTitle>
           <HighlightSection style={{ flexDirection: "column", gap: 24 }}>
@@ -257,54 +265,13 @@ const HomeScreen = () => {
             </View>
           </HighlightSection>
         </ZooSection>
-
-        {/* Popup de Notícias */}
-        {/* {showNews ? (
-          <NewsPopup>
-            <NewsPopupContent>
-              <NewsCloseButton onPress={() => setShowNews(false)}>
-                <Text style={{ fontSize: 24, lineHeight: 24 }}>×</Text>
-              </NewsCloseButton>
-              <NewsTitle style={{ textAlign: "center" }}>
-                🦓 ENTRADA GRATUITA NO ZOOLÓGICO DE BRASÍLIA
-              </NewsTitle>
-              <ZooText>
-                O Zoológico de Brasília oferece entrada{" "}
-                <Text style={{ fontWeight: "bold" }}>gratuita</Text> para todos
-                os visitantes todos os domingos e feriados! 🐾
-              </ZooText>
-              <ZooText>
-                Não perca as{" "}
-                <Text style={{ fontWeight: "bold" }}>visitas guiadas</Text> (às
-                9h30 e 14h30, em frente à estátua da elefante Nelly) e as
-                atividades de{" "}
-                <Text style={{ fontWeight: "bold" }}>educação ambiental</Text>,
-                com muita diversão e aprendizado sobre a fauna e a conservação.
-              </ZooText>
-              <ZooText>
-                O <Text style={{ fontWeight: "bold" }}>borboletário</Text>{" "}
-                também está aberto de quarta a domingo, das 9h às 12h e das
-                13h30 às 15h30 — uma experiência encantadora para toda a
-                família!
-              </ZooText>
-            </NewsPopupContent>
-          </NewsPopup>
-        ) : (
-          <NewsReopenButton onPress={() => setShowNews(true)}>
-            <Text>🦓 Entrada gratuita no Zoo!</Text>
-            
-          </NewsReopenButton>
-        )} */}
       </ScrollView>
-
-      {/* Botão SEMPRE visível na parte inferior */}
       {!showNews && (
         <NewsReopenButton onPress={() => setShowNews(true)}>
           <Text>🦓 Entrada gratuita no Zoo!</Text>
         </NewsReopenButton>
       )}
 
-      {/* Popup (sobrepõe tudo quando aberto) */}
       {showNews && (
         <NewsPopup>
           <NewsPopupContent>
@@ -316,8 +283,8 @@ const HomeScreen = () => {
             </NewsTitle>
             <ZooText>
               O Zoológico de Brasília oferece entrada{" "}
-              <Text style={{ fontWeight: "bold" }}>gratuita</Text> para todos
-              os visitantes todos os domingos e feriados! 🐾
+              <Text style={{ fontWeight: "bold" }}>gratuita</Text> para todos os
+              visitantes todos os domingos e feriados! 🐾
             </ZooText>
             <ZooText>
               Não perca as{" "}
@@ -328,10 +295,9 @@ const HomeScreen = () => {
               com muita diversão e aprendizado sobre a fauna e a conservação.
             </ZooText>
             <ZooText>
-              O <Text style={{ fontWeight: "bold" }}>borboletário</Text>{" "}
-              também está aberto de quarta a domingo, das 9h às 12h e das
-              13h30 às 15h30 — uma experiência encantadora para toda a
-              família!
+              O <Text style={{ fontWeight: "bold" }}>borboletário</Text> também
+              está aberto de quarta a domingo, das 9h às 12h e das 13h30 às
+              15h30 — uma experiência encantadora para toda a família!
             </ZooText>
           </NewsPopupContent>
         </NewsPopup>

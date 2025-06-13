@@ -84,7 +84,7 @@ const Header = () => {
             <ButtonText variant="outline">HISTÓRIAS</ButtonText>
           </MenuItem> */}
           <MenuItem onPress={() => handleNavigate("Education")}>
-            <ButtonText variant="outline">EDUCAÇÃO</ButtonText>
+            <ButtonText variant="outline">EDUCAÇÃO AMBIENTAL</ButtonText>
           </MenuItem>
           <MenuItem onPress={() => handleNavigate("Conservation")}>
             <ButtonText variant="outline">CONSERVAÇÃO</ButtonText>
