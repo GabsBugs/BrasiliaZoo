@@ -47,7 +47,7 @@ const Header = () => {
           <>
             <NavLinks>
               <NavLink onPress={() => handleNavigate("Map")}>
-                <ButtonText variant="outline"> MAPA INTERATIVO</ButtonText>
+                <ButtonText variant="outline"> MAPA DO ZOOLÓGICO</ButtonText>
               </NavLink>
               <NavLink onPress={() => handleNavigate("Animal")}>
                 <ButtonText variant="outline">OS ANIMAIS</ButtonText>
@@ -56,7 +56,7 @@ const Header = () => {
                 <ButtonText variant="outline">HISTÓRIAS</ButtonText>
               </NavLink> */}
               <NavLink onPress={() => handleNavigate("Education")}>
-                <ButtonText variant="outline">EDUCAÇÃO</ButtonText>
+                <ButtonText variant="outline">EDUCAÇÃO AMBIENTAL</ButtonText>
               </NavLink>
             </NavLinks>
 
@@ -75,7 +75,7 @@ const Header = () => {
       {menuVisible && (
         <MenuOverlay>
           <MenuItem onPress={() => handleNavigate("Map")}>
-            <ButtonText variant="outline">MAPA INTERATIVO</ButtonText>
+            <ButtonText variant="outline">MAPA DO ZOOLÓGICO</ButtonText>
           </MenuItem>
           <MenuItem onPress={() => handleNavigate("Animal")}>
             <ButtonText variant="outline">OS ANIMAIS</ButtonText>

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+
 import {
+  Animated,
+  Easing,
   View,
   Text,
   Image,
@@ -10,6 +12,8 @@ import {
 } from "react-native";
 import Header from "../components/Header";
 import { Platform } from "react-native";
+import React, { useEffect, useRef, useState} from "react";
+
 
 const animals = [
   {
@@ -2757,57 +2761,80 @@ const animalTypes = [
   { label: "Borboletário", value: "borboletas" },
 ];
 
-const AnimalCard = ({ item }) => (
-  <View style={styles.card}>
-    {/* Nome */}
-    <Text style={styles.title}>{item.name}</Text>
-    <Text style={styles.scientificName}>{item.scientificName}</Text>
+const AnimalCard = ({ item }) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(30)).current;
 
-    {/* Imagem */}
-    <View style={styles.imageContainer}>
-      {item.image ? (
-        <Image source={item.image} style={styles.image} resizeMode="cover" />
-      ) : item.imageUrl ? (
-        <Image
-          source={{ uri: item.imageUrl }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-      ) : (
-        <View style={styles.imagePlaceholder}>
-          <Text style={styles.placeholderText}>Imagem não disponível</Text>
-        </View>
-      )}
-    </View>
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 900,
+        useNativeDriver: true,
+      }),
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 900,
+        easing: Easing.out(Easing.exp),
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
 
-    {/* Crédito da imagem */}
-    {item.credit && <Text style={styles.credit}>{item.credit}</Text>}
-
-    {/* Info */}
-    <View style={styles.infoBox}>
-      <Text style={styles.label}>Habitat:</Text>
-      <Text style={styles.text}>{item.habitat || "Não informado"}</Text>
-
-      <Text style={styles.label}>Status de Conservação:</Text>
-      <Text style={styles.text}>
-        {item.conservationStatus || "Não informado"}
-      </Text>
-    </View>
-
-    {/* Descrição */}
-    <Text style={styles.description}>
-      {item.description || "Descrição não disponível."}
-    </Text>
-
-    {/* Link */}
-    <Text
-      style={styles.link}
-      onPress={() => Linking.openURL("https://www.zoo.df.gov.br")}
+  return (
+    <Animated.View
+      style={[
+        styles.card,
+        {
+          opacity: fadeAnim,
+          transform: [{ translateY: slideAnim }],
+        },
+      ]}
     >
-      Saiba mais no site do Zoológico de Brasília
-    </Text>
-  </View>
-);
+      <Text style={styles.title}>{item.name}</Text>
+      <Text style={styles.scientificName}>{item.scientificName}</Text>
+
+      <View style={styles.imageContainer}>
+        {item.image ? (
+          <Image source={item.image} style={styles.image} resizeMode="cover" />
+        ) : item.imageUrl ? (
+          <Image
+            source={{ uri: item.imageUrl }}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        ) : (
+          <View style={styles.imagePlaceholder}>
+            <Text style={styles.placeholderText}>Imagem não disponível</Text>
+          </View>
+        )}
+      </View>
+
+      {item.credit && <Text style={styles.credit}>{item.credit}</Text>}
+
+      <View style={styles.infoBox}>
+        <Text style={styles.label}>Habitat:</Text>
+        <Text style={styles.text}>{item.habitat || "Não informado"}</Text>
+
+        <Text style={styles.label}>Status de Conservação:</Text>
+        <Text style={styles.text}>
+          {item.conservationStatus || "Não informado"}
+        </Text>
+      </View>
+
+      <Text style={styles.description}>
+        {item.description || "Descrição não disponível."}
+      </Text>
+
+      <Text
+        style={styles.link}
+        onPress={() => Linking.openURL("https://www.zoo.df.gov.br")}
+      >
+        Saiba mais no site do Zoológico de Brasília
+      </Text>
+    </Animated.View>
+  );
+};
 
 const ZooAnimalsScreen = () => {
   const [selectedType, setSelectedType] = useState("mamíferos");
@@ -2904,15 +2931,15 @@ const styles = StyleSheet.create({
     }),
   },
   headerTitle: {
-    fontSize: 28,
-    fontWeight: "800",
+
+    fontSize: 32,
+    fontWeight: "900",
     textAlign: "center",
     marginVertical: 20,
-    color: "#2d5e2d",
-    paddingTop: Platform.OS === "ios" ? 160 : 140,
-    fontFamily: "Helvetica Neue",
-    textTransform: "uppercase",
+    color: "#2e7d32", 
+    paddingTop: Platform.OS === "ios" ? 160 : 120,
     letterSpacing: 1.2,
+    fontFamily: Platform.OS === "ios" ? "Georgia" : "serif",
   },
   filterContainer: {
     flexDirection: "row",
@@ -2980,10 +3007,11 @@ const styles = StyleSheet.create({
     }),
   },
   title: {
-    fontSize: 22,
+    fontSize: 28,
     fontWeight: "700",
     color: "#2d5e2d",
     marginBottom: 4,
+    
   },
   scientificName: {
     fontSize: 16,

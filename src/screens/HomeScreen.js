@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Image, Text, ScrollView, SafeAreaView } from "react-native";
 
 import {
@@ -54,11 +54,18 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../components/Header";
 
+import { Dimensions } from "react-native";
+import { useWindowDimensions, Platform } from "react-native";
+
 const HomeScreen = () => {
   const [showNews, setShowNews] = useState(true);
   const navigation = useNavigation();
 
-
+  const { width } = useWindowDimensions();
+  const isMobile = width < 768;
+  const isWeb = Platform.OS === "web";
+  const isMobileWeb = isWeb && isMobile;
+  const isMobileNative = Platform.OS === "ios" || Platform.OS === "android";
 
   const [fontsLoaded] = useFonts({
     MontserratSemiBold: Montserrat_600SemiBold,
@@ -86,12 +93,12 @@ const HomeScreen = () => {
   };
 
   const handlePlanVisitClick = () => {
-  navigation.navigate("PlanVisit"); 
-};
+    navigation.navigate("PlanVisit");
+  };
 
-const handleKnowAnimalsClick = () => {
-  navigation.navigate("Animal");  
-};
+  const handleKnowAnimalsClick = () => {
+    navigation.navigate("Animal");
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -130,35 +137,76 @@ const handleKnowAnimalsClick = () => {
         </HeroSection>
 
         <ZooSection $memorial>
-          <ZooTitle>EM MEMÓRIA DE YAZA</ZooTitle>
-          <MemorialSection>
-            <MemorialContent>
-              <MemorialImage source={require("../assets/images/girafa1.jpg")} />
-              <MemorialDateBadge>
-                <Text>2003 - 2025</Text>
-              </MemorialDateBadge>
-            </MemorialContent>
-            <View
-              style={{ flex: 1, justifyContent: "center", paddingLeft: 16 }}
-            >
-              <MemorialTitle>Yaza, nossa querida girafa</MemorialTitle>
-              <MemorialText>
-                Em março de 2025, nos despedimos da girafa Yaza, uma presença
-                majestosa e inesquecível no Zoológico de Brasília. Seu legado
-                vive em nossos corações e na memória de todos que tiveram o
-                privilégio de conhecê-la.
-              </MemorialText>
-              <MemorialButton onPress={handleYazaClick}>
-                <Text>SAIBA MAIS SOBRE YAZA</Text>
-              </MemorialButton>
-            </View>
-          </MemorialSection>
-        </ZooSection>
+  <ZooTitle>EM MEMÓRIA DE YAZA</ZooTitle>
 
+  <MemorialSection>
+    {isMobileNative ? (
+      <View style={{ width: '100%', alignItems: 'center' }}>
+        <MemorialTitle style={{ textAlign: 'center', marginBottom: 16 }}>
+          Yaza, nossa querida girafa
+        </MemorialTitle>
+        
+        <MemorialContent>
+          <MemorialImage
+            source={require("../assets/images/girafa1.jpg")}
+          />
+          <MemorialDateBadge style={{ bottom: -290, right: -25 }}>
+            <Text style={{ color: "white" }}>2003 - 2025</Text>
+          </MemorialDateBadge>
+        </MemorialContent>
+        
+        <View style={{ paddingHorizontal: 24, marginTop: 24 }}>
+          <MemorialText style={{ textAlign: 'center' }}>
+            Em março de 2025, nos despedimos da girafa Yaza, uma
+            presença majestosa e inesquecível no Zoológico de Brasília.
+            Seu legado vive em nossos corações e na memória de todos que
+            tiveram o privilégio de conhecê-la.
+          </MemorialText>
+          <MemorialButton
+            onPress={handleYazaClick}
+            style={{ alignSelf: 'center', marginTop: -20 }}
+          >
+            <Text style={{ color: "white" }}>SAIBA MAIS SOBRE YAZA</Text>
+          </MemorialButton>
+        </View>
+      </View>
+    ) : (
+      <>
+        <MemorialContent>
+          <MemorialImage
+            source={require("../assets/images/girafa1.jpg")}
+          />
+          <MemorialDateBadge>
+            <Text style={{ color: "white" }}>2003 - 2025</Text>
+          </MemorialDateBadge>
+        </MemorialContent>
+
+        <View style={{ flex: 1, paddingLeft: 24 }}>
+          <MemorialTitle>Yaza, nossa querida girafa</MemorialTitle>
+          <MemorialText>
+            Em março de 2025, nos despedimos da girafa Yaza, uma
+            presença majestosa e inesquecível no Zoológico de Brasília.
+            Seu legado vive em nossos corações e na memória de todos que
+            tiveram o privilégio de conhecê-la.
+          </MemorialText>
+          <MemorialButton
+            onPress={handleYazaClick}
+            style={{ alignSelf: 'flex-start', marginTop: 16 }}
+          >
+            <Text style={{ color: "white" }}>SAIBA MAIS SOBRE YAZA</Text>
+          </MemorialButton>
+        </View>
+      </>
+    )}
+  </MemorialSection>
+</ZooSection>
         <ZooDivider />
 
         <ZooSection>
-          <ZooTitle>CONECTE-SE COM O MUNDO NATURAL</ZooTitle>
+          <ZooTitle>
+            {" "}
+            <Text>CONECTE-SE COM O MUNDO NATURAL</Text>
+          </ZooTitle>
           <ZooText>
             Habitats incríveis e experiências únicas com a vida selvagem de todo
             o mundo em um dia inesquecível.
@@ -184,9 +232,8 @@ const handleKnowAnimalsClick = () => {
             </View>
           </HighlightSection>
         </ZooSection>
-
         <ZooSection>
-          <ZooTitle>Não Perca Estas Experiências!</ZooTitle>
+          <ZooTitle>Nãomemo Perca Estas Experiências!</ZooTitle>
           <HighlightSection style={{ flexDirection: "column", gap: 24 }}>
             <View
               style={{

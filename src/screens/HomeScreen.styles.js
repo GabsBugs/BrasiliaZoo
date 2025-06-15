@@ -4,7 +4,8 @@ import { Text, View, ImageBackground, Image } from "react-native";
 import { Animated } from "react-native";
 import { Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Platform } from 'react-native'; 
+import { Platform } from 'react-native';
+
 
 export const HomeContainer = styled(ImageBackground).attrs({
   resizeMode: "cover",
@@ -135,28 +136,6 @@ export const UnderlineBar = styled(LinearGradient).attrs({
   height: 100%;
   border-radius: 2px;
 `;
-
-
-// Navbar
-// export const Navbar = styled.View`
-//   background-color: white;
-//   padding: 16px 24px;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin: 20px;
-//   border-radius: 20px;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   elevation: 10;
-//   shadow-color: #000;
-//   shadow-offset: 0px 8px;
-//   shadow-opacity: 0.15;
-//   shadow-radius: 16px;
-//   z-index: 1000;
-// `;
 
 
 export const TitleUnderlineContainer = styled.View`
@@ -398,23 +377,23 @@ export const GoldenDotsOverlay = styled.View`
 `;
 
 
-
-
+// Memorial 
 
 export const ZooSection = styled.View`
-  padding: 64px 32px;
+  padding: 6px 32px;
   background-color: ${(props) => (props.memorial ? "#f9f5f0" : "white")};
   align-items: center;
+  width: 100%;
 `;
 
 export const MemorialSection = styled.View`
-  flex-direction: row;
+  flex-direction: ${Platform.OS === 'ios' ? 'column' : 'row'};  
   align-items: center;
   justify-content: center;
-  gap: 48px;
-  max-width: 1200px;
+  gap: ${Platform.OS === 'ios' || Platform.OS === 'android' ? '16' : '24'}; 
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 32px;
+  padding: 24px;
   background-color: #fff;
   border-radius: 20px;
   elevation: 5;
@@ -422,6 +401,7 @@ export const MemorialSection = styled.View`
   shadow-opacity: 0.1;
   shadow-radius: 30px;
   shadow-offset: 0px 10px;
+  text-align: center;
 
   ${(props) =>
     props.memorial &&
@@ -430,25 +410,25 @@ export const MemorialSection = styled.View`
     padding-bottom: 48px;
   `}
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 32px;
-  }
 `;
 
-// Memorial Components
+
 export const MemorialContent = styled.View`
   position: relative;
   flex: 1;
   max-width: 500px;
+  width: ${Platform.OS === 'ios' ? '280px' : undefined}; 
+  height: ${Platform.OS === 'ios' ? '780px' : undefined}; 
+  align-items: ${Platform.OS === 'ios' ? 'center' : undefined};
+  margin-bottom: ${Platform.OS === 'ios' || Platform.OS === 'android' ? '280px' : '0'}; 
 `;
 
 export const MemorialImage = styled.Image`
-  width: 100%;
-  height: 350px;
+  width: ${Platform.OS === 'web' ? '100%' : '280px'};
+  height: ${Platform.OS === 'web' ? '350px' : '280px'};
   border-radius: 16px;
   elevation: 5;
-  shadow-color: #8b4513;
+  shadow-color:rgb(212, 119, 52);
   shadow-opacity: 0.2;
   shadow-radius: 25px;
   shadow-offset: 0px 8px;
