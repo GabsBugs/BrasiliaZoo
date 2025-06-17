@@ -21,18 +21,28 @@ const TamanduaDetails = () => {
           Nascimento de Tamanduá-Mirim no Zoo reforça esforços de conservação
         </Text>
 
-        <img
-          src="/images/tamandua-mirim.jpeg"
-          alt="Tamanduá-Mirim"
-          style={{
-            width: "30%",
-            height: "400px",
-            objectFit: "cover",
-            display: "block",
-            margin: "30px auto",
-            borderRadius: "30px",
-          }}
-        />
+        <Image
+                  source={require("../../src/assets/images/tamandua-mirim.jpeg")}
+                  style={{
+                    width: Platform.select({
+                      web: 350,
+                      default: "80%",
+                    }),
+        
+                    height: Platform.select({
+                      web: 350,
+                      default: 300,
+                    }),
+                    aspectRatio: Platform.select({
+                      web: 1,
+                      default: undefined,
+                    }),
+                    resizeMode: "cover",
+                    borderRadius: 30,
+                    alignSelf: "center",
+                    marginBottom: 30,
+                  }}
+                />
 
         <Text style={styles.text}>
           O Zoológico de Brasília comemora o nascimento de um tamanduá-mirim,
@@ -164,6 +174,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
     color: "#2E8B57",
+    marginTop: ['ios', 'android'].includes(Platform.OS) ? 65 : 30,
   },
   socialShare: {
     flexDirection: "row",

@@ -12,8 +12,22 @@ import {
 } from "react-native";
 import Header from "../components/Header";
 import mapZoo from "../assets/images/mapaZoo.jpg";
+import styled from "styled-components/native";
+import {
+  Ionicons,
+  MaterialCommunityIcons,
+  Feather,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
+
+const LeafIcon = styled(Ionicons)`
+margin-right: ${['ios', 'android'].includes(Platform.OS) ? 7 : 10}px;
+  margin-left: ${['ios', 'android'].includes(Platform.OS) ? 7 : 10}px;
+  margin-top: ${['ios', 'android'].includes(Platform.OS) ? 90 : 40}px;
+`;
+
 export default function Map() {
   const imageWidth = width * 4;
   const containerWidth = width * 0.9;
@@ -63,7 +77,12 @@ export default function Map() {
           marginBottom: 20,
         }}
       >
-        <Text style={styles.title}>Mapa do Zoológico</Text>
+
+        <View style={styles.titleContainer}>
+                      <Text style={styles.title}>
+                        Mapa do Zoológico
+                      </Text>
+                    </View>
 
         {Platform.OS !== "web" && (
           <Text style={styles.subtitle}>
@@ -84,8 +103,7 @@ export default function Map() {
               paddingHorizontal: 0,
             }}
           >
-            <Image
-              source={mapZoo}
+            <Image source={require("../assets/images/mapaZoo.jpg")} 
               style={[
                 styles.mapImage,
                 Platform.OS === "web"
@@ -118,6 +136,12 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === "ios" ? "Georgia" : "serif",
     alignItems: "center",
   },
+   titleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   mapContainer: {
     width: Platform.OS === "web" ? 700 : width * 1,
     height: Platform.OS === "web" ? 500 : height * 0.6,

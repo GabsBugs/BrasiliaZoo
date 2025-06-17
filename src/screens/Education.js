@@ -11,6 +11,16 @@ import styled from "styled-components/native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Header from "../components/Header";
 
+
+const LeafIcon = styled(Ionicons)`
+  margin: 0 5px;
+`;
+
+const AnimalIcon = styled(Ionicons)`
+  opacity: 0.7;
+`;
+
+
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function EducationScreen() {
@@ -107,7 +117,11 @@ const pulseAnimMuseu = useRef(new Animated.Value(1)).current;
     contentContainerStyle={{ paddingBottom: 60 }}
   >
     <TitleArea>
+                <LeafIcon name="leaf" size={24} color="#4caf50" />
       <MainTitle>Educação Ambiental</MainTitle>
+            <LeafIcon name="leaf" size={24} color="#4caf50" />
+
+
     </TitleArea>
 
     <Description>
@@ -451,7 +465,7 @@ const TitleArea = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: ${Platform.OS === "ios" ? "190px" : "150px"};
+  margin-top:  ${['ios', 'android'].includes(Platform.OS) ? "190px" : "150px"};
   margin-bottom: 20px;
 `;
 
@@ -459,9 +473,9 @@ const MainTitle = styled.Text`
   font-size: 32px;
   font-weight: 900;
   color: #2e7d32;
-  margin: 0 10px;
+  margin: 0 30px;
   letter-spacing: 1px;
-  font-family: ${Platform.OS === "ios" ? "Georgia" : "serif"};
+  font-family:  ${['ios', 'android'].includes(Platform.OS) ? "Georgia" : "serif"};
 `;
 
 const Description = styled.Text`

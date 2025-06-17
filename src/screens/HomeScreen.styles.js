@@ -73,7 +73,7 @@ export const HeroSection = styled(ImageBackground).attrs({
 })`
  padding-top: 80px;
   width: 100%;
-  height: ${Platform.OS === 'ios' ? '600px' : '650px'};
+  height: ${['ios', 'android'].includes(Platform.OS) ? '600px' : '650px'};
 
   justify-content: center;
   align-items: center;
@@ -109,7 +109,7 @@ export const Title = styled.Text`
 export const Subtitle = styled.Text`
   color: #facc15;
   font-weight: 600;
-  font-size: ${Platform.OS === 'ios' ? 12 : 10 }px; 
+  font-size: ${['ios', 'android'].includes(Platform.OS) ? 12 : 10 }px; 
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0px 28px;
@@ -297,10 +297,19 @@ export const SecondaryButtonText = styled(ButtonTextWhite)`
 `;
 
 export const ZooTitle = styled(Text)`
-  font-size: 32px;
+  font-size: 30px;
   color: #2d7a36;
   margin-bottom: 16px;
   font-weight: 600;
+  font-family:  ${['ios', 'android'].includes(Platform.OS) ? "Georgia" : "serif"};
+`;
+
+export const ImageCredit = styled.Text`
+  font-size: 12px;
+  color: #888;
+  text-align: right;
+  margin-top: -12px;
+  margin-bottom: 16px;
 `;
 
 export const ZooSubtitle = styled(Text)`
@@ -387,10 +396,10 @@ export const ZooSection = styled.View`
 `;
 
 export const MemorialSection = styled.View`
-  flex-direction: ${Platform.OS === 'ios' ? 'column' : 'row'};  
+  flex-direction: ${['ios', 'android'].includes(Platform.OS) ? 'column' : 'row'};  
   align-items: center;
   justify-content: center;
-  gap: ${Platform.OS === 'ios' || Platform.OS === 'android' ? '16' : '24'}; 
+  gap: ${['ios', 'android'].includes(Platform.OS) ? '16' : '24'}; 
   max-width: 1000px;
   margin: 0 auto;
   padding: 24px;
@@ -417,10 +426,10 @@ export const MemorialContent = styled.View`
   position: relative;
   flex: 1;
   max-width: 500px;
-  width: ${Platform.OS === 'ios' ? '280px' : undefined}; 
-  height: ${Platform.OS === 'ios' ? '780px' : undefined}; 
-  align-items: ${Platform.OS === 'ios' ? 'center' : undefined};
-  margin-bottom: ${Platform.OS === 'ios' || Platform.OS === 'android' ? '280px' : '0'}; 
+  width: ${['ios', 'android'].includes(Platform.OS) ? '280px' : undefined}; 
+  height: ${['ios', 'android'].includes(Platform.OS) ? '780px' : undefined}; 
+  align-items: ${['ios', 'android'].includes(Platform.OS) ? 'center' : undefined};
+  margin-bottom: ${['ios', 'android'].includes(Platform.OS) ? '280px' : '0'}; 
 `;
 
 export const MemorialImage = styled.Image`
@@ -463,6 +472,7 @@ export const MemorialTitle = styled.Text`
   position: relative;
   padding-bottom: 12.8px;
   text-align: left;
+  font-family:  ${['ios', 'android'].includes(Platform.OS) ? "Georgia" : "serif"};
 `;
 
 export const MemorialText = styled.Text`
@@ -564,10 +574,10 @@ export const NewsText = styled.Text`
   color: #444;
 `;
 
-// News Popup
+// Popup
 export const NewsPopup = styled.View`
   position: absolute;
-  top: ${Platform.OS === 'ios' ? '22%' : '3%'};  
+  top: ${['ios', 'android'].includes(Platform.OS) ? '22%' : '3%'};  
   
   left: 20px;
   right: 20px; 

@@ -22,6 +22,12 @@ import Collapsible from "react-native-collapsible";
 
 import { LinearGradient } from "expo-linear-gradient";
 
+
+const AnimalIcon = styled(Ionicons)`
+  opacity: 0.7;
+`;
+
+
 const Container = styled.View`
   flex: 1;
   background-color: rgb(255, 255, 255);
@@ -29,7 +35,7 @@ const Container = styled.View`
 
 const Content = styled.View`
   padding: 20px;
-  padding-top: ${Platform.OS === "ios" ? 0 : 0}px;
+  padding-top: ${['ios', 'android'].includes(Platform.OS) ? 0 : 0}px;
 `;
 
 const Title = styled.Text`
@@ -38,9 +44,22 @@ const Title = styled.Text`
   color: #2e7d32;
   margin-bottom: 20px;
   text-align: center;
-  margin-top: ${Platform.OS === "ios" ? -60 : -100}px;
-  font-family: ${Platform.OS === "ios" ? "Georgia" : "serif"};
+  margin-top: ${['ios', 'android'].includes(Platform.OS) ? -60 : -100}px;
+  font-family: ${['ios', 'android'].includes(Platform.OS) ? "Georgia" : "serif"};
 `;
+
+const TitleContainer = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LeafIcon = styled(Ionicons)`
+  margin: 0 15px;
+  margin-top: ${['ios', 'android'].includes(Platform.OS) ? -60 : -120}px;
+  
+`;
+
 
 const Paragraph = styled.Text`
   font-size: 16px;
@@ -210,7 +229,13 @@ export default function Conservation() {
             resizeMode="cover"
           />
 
-          <Title>Conservação da Biodiversidade</Title>
+          <TitleContainer>
+      <LeafIcon name="leaf" size={24} color="#4caf50" />
+      <Title>Conservação da Biodiversidade</Title>
+      <LeafIcon name="leaf" size={24} color="#4caf50" />
+    </TitleContainer>
+
+
 
           <Paragraph>
             O Zoológico de Brasília atua ativamente na preservação da

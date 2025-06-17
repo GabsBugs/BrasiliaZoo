@@ -1,4 +1,3 @@
-
 import {
   Animated,
   Easing,
@@ -12,8 +11,9 @@ import {
 } from "react-native";
 import Header from "../components/Header";
 import { Platform } from "react-native";
-import React, { useEffect, useRef, useState} from "react";
-
+import styled from "styled-components/native";
+import { Ionicons } from "@expo/vector-icons";
+import React, { useEffect, useRef, useState } from "react";
 
 const animals = [
   {
@@ -2034,722 +2034,772 @@ const animals = [
     type: "aves",
   },
   {
-  id: 146,
-  name: "Aperema",
-  scientificName: "Rhinoclemmys punctularia",
-  description: "Cágado terrestre encontrado em áreas alagadas da América do Sul, com carapaça escura e pintas claras.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Aparema-e1710852380700.png",
+    id: 146,
+    name: "Aperema",
+    scientificName: "Rhinoclemmys punctularia",
+    description:
+      "Cágado terrestre encontrado em áreas alagadas da América do Sul, com carapaça escura e pintas claras.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Aparema-e1710852380700.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Áreas alagadas e florestas da América do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Áreas alagadas e florestas da América do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 147,
-  name: "Cascavel",
-  scientificName: "Crotalus durissus",
-  description: "Serpente peçonhenta com chocalho característico na cauda, encontrada em áreas abertas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/cascavel-e1710852510268-768x695.jpg",
+  {
+    id: 147,
+    name: "Cascavel",
+    scientificName: "Crotalus durissus",
+    description:
+      "Serpente peçonhenta com chocalho característico na cauda, encontrada em áreas abertas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/cascavel-e1710852510268-768x695.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Cerrado, caatinga e campos abertos da América do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Cerrado, caatinga e campos abertos da América do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 148,
-  name: "Cobra-do-milho",
-  scientificName: "Pantherophis guttatus",
-  description: "Serpente não peçonhenta muito popular como pet, com coloração alaranjada e manchas pretas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/COBRA-DO-MILHO-1-e1710852739986.jpg",
+  {
+    id: 148,
+    name: "Cobra-do-milho",
+    scientificName: "Pantherophis guttatus",
+    description:
+      "Serpente não peçonhenta muito popular como pet, com coloração alaranjada e manchas pretas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/COBRA-DO-MILHO-1-e1710852739986.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas e campos dos Estados Unidos",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas e campos dos Estados Unidos",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 149,
-  name: "Cotiarinha",
-  scientificName: "Bothrops itapetiningae",
-  description: "Víbora brasileira de pequeno porte, com coloração marrom e manchas escuras.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/cotiarinha-e1710852879317-768x653.jpg",
+  {
+    id: 149,
+    name: "Cotiarinha",
+    scientificName: "Bothrops itapetiningae",
+    description:
+      "Víbora brasileira de pequeno porte, com coloração marrom e manchas escuras.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/cotiarinha-e1710852879317-768x653.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Cerrado e regiões áridas do Brasil",
+    conservationStatus: "Quase ameaçada (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Cerrado e regiões áridas do Brasil",
-  conservationStatus: "Quase ameaçada (IUCN)",
-  type: "répteis",
-},
-{
-  id: 150,
-  name: "Dragão-barbudo",
-  scientificName: "Pogona vitticeps",
-  description: "Réptil australiano conhecido pela 'barba' que incha quando ameaçado. Muito criado como pet.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Drag%C3%A3o-barbudo-e1710853005607.png",
+  {
+    id: 150,
+    name: "Dragão-barbudo",
+    scientificName: "Pogona vitticeps",
+    description:
+      "Réptil australiano conhecido pela 'barba' que incha quando ameaçado. Muito criado como pet.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Drag%C3%A3o-barbudo-e1710853005607.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Ambientes áridos e semiáridos da Austrália",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Ambientes áridos e semiáridos da Austrália",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 151,
-  name: "Gecko-leopardo",
- scientificName: "Eublepharis macularius",
-  description: "Lagarto pequeno, noturno, com pele manchada semelhante à de um leopardo. Muito criado como pet.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2017/08/Gecko.jpeg",
+  {
+    id: 151,
+    name: "Gecko-leopardo",
+    scientificName: "Eublepharis macularius",
+    description:
+      "Lagarto pequeno, noturno, com pele manchada semelhante à de um leopardo. Muito criado como pet.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2017/08/Gecko.jpeg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Desertos e regiões rochosas da Ásia Central",
+    conservationStatus: "Não avaliado (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Desertos e regiões rochosas da Ásia Central",
-  conservationStatus: "Não avaliado (IUCN)",
-  type: "répteis",
-},
-{
-  id: 152,
-  name: "Iguana",
-  scientificName: "Iguana iguana",
-  description: "Lagarto arborícola de grande porte, conhecido por sua crista dorsal e cauda longa.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/iguana-e1710853347513-768x681.jpg",
+  {
+    id: 152,
+    name: "Iguana",
+    scientificName: "Iguana iguana",
+    description:
+      "Lagarto arborícola de grande porte, conhecido por sua crista dorsal e cauda longa.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/iguana-e1710853347513-768x681.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais da América Central e do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais da América Central e do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 153,
-  name: "Jabuti-piranga",
-  scientificName: "Chelonoidis carbonaria",
-  description: "Quelônio terrestre brasileiro com carapaça escura e manchas amareladas ou alaranjadas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jabuti-piranga.png",
+  {
+    id: 153,
+    name: "Jabuti-piranga",
+    scientificName: "Chelonoidis carbonaria",
+    description:
+      "Quelônio terrestre brasileiro com carapaça escura e manchas amareladas ou alaranjadas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jabuti-piranga.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas e cerrado da América do Sul",
+    conservationStatus: "Vulnerável (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas e cerrado da América do Sul",
-  conservationStatus: "Vulnerável (IUCN)",
-  type: "répteis",
-},
-{
-  id: 154,
-  name: "Jacaré-do-pantanal",
-  scientificName: "Caiman yacare",
-  description: "Espécie de jacaré abundante no Pantanal, de coloração escura e tamanho médio.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/WhatsApp-Image-2024-02-28-at-10.34.22-e1710526214632.jpg",
+  {
+    id: 154,
+    name: "Jacaré-do-pantanal",
+    scientificName: "Caiman yacare",
+    description:
+      "Espécie de jacaré abundante no Pantanal, de coloração escura e tamanho médio.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/WhatsApp-Image-2024-02-28-at-10.34.22-e1710526214632.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Áreas alagadas do Pantanal e bacias do Prata e Amazonas",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Áreas alagadas do Pantanal e bacias do Prata e Amazonas",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 155,
-  name: "Jabuti-tinga",
-  scientificName: "Chelonoidis denticulata",
-  description: "Maior jabuti da América do Sul, encontrado em florestas tropicais, com carapaça amarelada.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/jabuti-tinga-768x644.jpg",
+  {
+    id: 155,
+    name: "Jabuti-tinga",
+    scientificName: "Chelonoidis denticulata",
+    description:
+      "Maior jabuti da América do Sul, encontrado em florestas tropicais, com carapaça amarelada.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/jabuti-tinga-768x644.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais da América do Sul",
+    conservationStatus: "Vulnerável (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais da América do Sul",
-  conservationStatus: "Vulnerável (IUCN)",
-  type: "répteis",
-},
-{
-  id: 156,
-  name: "Jacaré-tinga",
-  scientificName: "Caiman crocodilus",
-  description: "Jacaré comum em rios e lagos da América do Sul, com olhos e narinas elevados.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jacar%C3%A9-tinga.png",
+  {
+    id: 156,
+    name: "Jacaré-tinga",
+    scientificName: "Caiman crocodilus",
+    description:
+      "Jacaré comum em rios e lagos da América do Sul, com olhos e narinas elevados.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jacar%C3%A9-tinga.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Rios, igarapés e lagos da América Latina",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Rios, igarapés e lagos da América Latina",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 157,
-  name: "Jararaca-caiçaca",
-  scientificName: "Bothrops moojeni",
-  description: "Serpente venenosa brasileira, agressiva e de grande porte.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jararaca-Cai%C3%A7aca-e1710853800778.png",
+  {
+    id: 157,
+    name: "Jararaca-caiçaca",
+    scientificName: "Bothrops moojeni",
+    description: "Serpente venenosa brasileira, agressiva e de grande porte.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jararaca-Cai%C3%A7aca-e1710853800778.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Cerrado e bordas de florestas do Brasil Central",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Cerrado e bordas de florestas do Brasil Central",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 158,
-  name: "Jararaca-pintada",
-  scientificName: "Bothrops neuwiedi",
-  description: "Víbora terrestre com coloração marrom-avermelhada e manchas escuras laterais.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/WhatsApp-Image-2024-10-11-at-09.48.50.jpeg",
+  {
+    id: 158,
+    name: "Jararaca-pintada",
+    scientificName: "Bothrops neuwiedi",
+    description:
+      "Víbora terrestre com coloração marrom-avermelhada e manchas escuras laterais.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/WhatsApp-Image-2024-10-11-at-09.48.50.jpeg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Regiões de cerrado, mata atlântica e áreas abertas",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Regiões de cerrado, mata atlântica e áreas abertas",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 159,
-  name: "Jiboia",
-  scientificName: "Boa constrictor",
-  description: "Serpente não peçonhenta que mata por constrição; muito encontrada em florestas tropicais.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jiboia-e1710861422818.png",
+  {
+    id: 159,
+    name: "Jiboia",
+    scientificName: "Boa constrictor",
+    description:
+      "Serpente não peçonhenta que mata por constrição; muito encontrada em florestas tropicais.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jiboia-e1710861422818.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais e savanas da América Central e do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais e savanas da América Central e do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 160,
-  name: "Jiboia Imperator",
-  scientificName: "Boa imperator",
-  description: "Semelhante à jiboia, porém menor e com padrão de cor mais vibrante; popular como pet.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/15598453858_a16a0788c6_b-768x512.jpg",
+  {
+    id: 160,
+    name: "Jiboia Imperator",
+    scientificName: "Boa imperator",
+    description:
+      "Semelhante à jiboia, porém menor e com padrão de cor mais vibrante; popular como pet.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/15598453858_a16a0788c6_b-768x512.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais e áreas semiabertas da América Central",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais e áreas semiabertas da América Central",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 161,
-  name: "Jararacuçu",
-  scientificName: "Bothrops jararacussu",
-  description: "Víbora venenosa de grande porte, encontrada em ambientes terrestres e próximos à água.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2022/02/jararacucu-e1710853947900.jpg",
+  {
+    id: 161,
+    name: "Jararacuçu",
+    scientificName: "Bothrops jararacussu",
+    description:
+      "Víbora venenosa de grande porte, encontrada em ambientes terrestres e próximos à água.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2022/02/jararacucu-e1710853947900.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas e áreas marginais aquáticas da América do Sul",
+    conservationStatus: "Quase ameaçada (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas e áreas marginais aquáticas da América do Sul",
-  conservationStatus: "Quase ameaçada (IUCN)",
-  type: "répteis",
-},
-{
-  id: 162,
-  name: "Jiboia-arco-íris",
-  scientificName: "Epicrates crassus",
-  description: "Serpente com iridescência suave nas escamas, encontrada no Pantanal e regiões adjacentes.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jiboia-arco-iris-e1710854517116.png",
+  {
+    id: 162,
+    name: "Jiboia-arco-íris",
+    scientificName: "Epicrates crassus",
+    description:
+      "Serpente com iridescência suave nas escamas, encontrada no Pantanal e regiões adjacentes.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Jiboia-arco-iris-e1710854517116.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Pantanal e áreas úmidas da América do Sul",
+    conservationStatus: "Vulnerável (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Pantanal e áreas úmidas da América do Sul",
-  conservationStatus: "Vulnerável (IUCN)",
-  type: "répteis",
-},
-{
-  id: 163,
-  name: "Jiboia-de-madagascar",
-  scientificName: "Acrantophis dumerili",
-  description: "Serpente terrestre de Madagascar, com padrão que mimetiza o chão da floresta.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/Jiboia-de-madagascar-e1710854690137.jpg",
+  {
+    id: 163,
+    name: "Jiboia-de-madagascar",
+    scientificName: "Acrantophis dumerili",
+    description:
+      "Serpente terrestre de Madagascar, com padrão que mimetiza o chão da floresta.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2017/08/Jiboia-de-madagascar-e1710854690137.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas decíduas e áreas semiáridas de Madagascar",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas decíduas e áreas semiáridas de Madagascar",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 164,
-  name: "Muçuã",
-  scientificName: "Kinosternon scorpioides",
-  description: "Tartaruga de pequeno a médio porte, com casco liso e presença de barbela.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Mu%C3%A7ua.png",
+  {
+    id: 164,
+    name: "Muçuã",
+    scientificName: "Kinosternon scorpioides",
+    description:
+      "Tartaruga de pequeno a médio porte, com casco liso e presença de barbela.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Mu%C3%A7ua.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Áreas alagadas, pântanos e rios lentos da América do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Áreas alagadas, pântanos e rios lentos da América do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 165,
-  name: "Píton-indiana",
-  scientificName: "Python molurus",
-  description: "Grande serpente que mata por constrição, encontrada em florestas e áreas próximas a água.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Piton-indiana-e1710854871876.png",
+  {
+    id: 165,
+    name: "Píton-indiana",
+    scientificName: "Python molurus",
+    description:
+      "Grande serpente que mata por constrição, encontrada em florestas e áreas próximas a água.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Piton-indiana-e1710854871876.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Áreas de floresta, pastagens e regiões úmidas do sul da Ásia",
+    conservationStatus: "Vulnerável (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Áreas de floresta, pastagens e regiões úmidas do sul da Ásia",
-  conservationStatus: "Vulnerável (IUCN)",
-  type: "répteis",
-},
-{
-  id: 166,
-  name: "Salamanta",
-  scientificName: "Epicrates cenchria",
-  description: "Também chamada de jiboia-de-coleira, tem círculos escuros e brilhantes nas laterais.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/salamanta.png",
+  {
+    id: 166,
+    name: "Salamanta",
+    scientificName: "Epicrates cenchria",
+    description:
+      "Também chamada de jiboia-de-coleira, tem círculos escuros e brilhantes nas laterais.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/salamanta.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais da América Central e do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais da América Central e do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 167,
-  name: "Suaçuboia",
-  scientificName: "Corallus hortulanus",
-  description: "Serpente arborícola com cores variáveis, encontrada em mata densa das Américas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Sua%C3%A7uboia-e1710860644490.png",
+  {
+    id: 167,
+    name: "Suaçuboia",
+    scientificName: "Corallus hortulanus",
+    description:
+      "Serpente arborícola com cores variáveis, encontrada em mata densa das Américas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Sua%C3%A7uboia-e1710860644490.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais da América Central e do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais da América Central e do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 168,
-  name: "Sucuri-verde",
-  scientificName: "Eunectes murinus",
-  description: "Maior serpente da América e uma das maiores do mundo, predadora de grandes presas aquáticas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Sucuri-verde.png",
+  {
+    id: 168,
+    name: "Sucuri-verde",
+    scientificName: "Eunectes murinus",
+    description:
+      "Maior serpente da América e uma das maiores do mundo, predadora de grandes presas aquáticas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Sucuri-verde.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Rios, lagos e pântanos da Amazônia e América do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Rios, lagos e pântanos da Amazônia e América do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 169,
-  name: "Tartaruga-da-Amazônia",
-  scientificName: "Podocnemis expansa",
-  description: "Tartaruga de grande porte da bacia amazônica, importante para os ecossistemas fluviais.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tartaruga-da-amazonia-e1710860787314.png",
+  {
+    id: 169,
+    name: "Tartaruga-da-Amazônia",
+    scientificName: "Podocnemis expansa",
+    description:
+      "Tartaruga de grande porte da bacia amazônica, importante para os ecossistemas fluviais.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tartaruga-da-amazonia-e1710860787314.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Rios e lagos da bacia amazônica",
+    conservationStatus: "Vulnerável (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Rios e lagos da bacia amazônica",
-  conservationStatus: "Vulnerável (IUCN)",
-  type: "répteis",
-},
-{
-  id: 170,
-  name: "Tartaruga-mordedora",
-  scientificName: "Chelydra serpentina",
-  description: "Tartaruga agressiva que se alimenta de peixes, anfíbios e carniça, encontrada na América do Norte.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tartaruga-mordedora.png",
+  {
+    id: 170,
+    name: "Tartaruga-mordedora",
+    scientificName: "Chelydra serpentina",
+    description:
+      "Tartaruga agressiva que se alimenta de peixes, anfíbios e carniça, encontrada na América do Norte.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tartaruga-mordedora.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Rios, pântanos e lagos da América do Norte",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Rios, pântanos e lagos da América do Norte",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 171,
-  name: "Teiú-comum",
-  scientificName: "Salvator merianae",
-  description: "Grande lagarto terrestre, onívoro, com coloração negra e manchas claras.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2017/08/Teiu.jpeg",
+  {
+    id: 171,
+    name: "Teiú-comum",
+    scientificName: "Salvator merianae",
+    description:
+      "Grande lagarto terrestre, onívoro, com coloração negra e manchas claras.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2017/08/Teiu.jpeg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Campos, cerrados e áreas abertas da América do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Campos, cerrados e áreas abertas da América do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 172,
-  name: "Tigre-d’água-norte-americano",
-  scientificName: "Trachemys scripta",
-  description: "Tartaruga semi-aquática com padrão listrado na cabeça; popular pet e invasora em muitos locais.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tigre-dagua.png",
+  {
+    id: 172,
+    name: "Tigre-d’água-norte-americano",
+    scientificName: "Trachemys scripta",
+    description:
+      "Tartaruga semi-aquática com padrão listrado na cabeça; popular pet e invasora em muitos locais.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tigre-dagua.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Rios, lagos e pântanos da América do Norte e áreas introduzidas",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Rios, lagos e pântanos da América do Norte e áreas introduzidas",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 173,
-  name: "Tigre-d’água-sul-americano",
-  scientificName: "Trachemys dorbigni",
-  description: "Tartaruga semi-aquática com marcas mais suaves que a tigre-d’água norte-americana.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tigre-dagua-sul-americano.png",
+  {
+    id: 173,
+    name: "Tigre-d’água-sul-americano",
+    scientificName: "Trachemys dorbigni",
+    description:
+      "Tartaruga semi-aquática com marcas mais suaves que a tigre-d’água norte-americana.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tigre-dagua-sul-americano.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Rios e lagoas da América do Sul",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Rios e lagoas da América do Sul",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "répteis",
-},
-{
-  id: 174,
-  name: "Tracajá",
-  scientificName: "Podocnemis unifilis",
-  description: "Tartaruga de casco liso, encontrada em rios da Amazônia e arredores.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tracaja.png",
+  {
+    id: 174,
+    name: "Tracajá",
+    scientificName: "Podocnemis unifilis",
+    description:
+      "Tartaruga de casco liso, encontrada em rios da Amazônia e arredores.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2020/01/Tracaja.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Rios e lagos da bacia amazônica",
+    conservationStatus: "Quase ameaçada (IUCN)",
+    type: "répteis",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Rios e lagos da bacia amazônica",
-  conservationStatus: "Quase ameaçada (IUCN)",
-  type: "répteis",
-},
-{
-  id: 175,
-  name: "Axolote",
-  scientificName: "Ambystoma mexicanum",
-  description: "Anfíbio neotênico conhecido por manter características larvais na vida adulta, como guelras externas. Pode regenerar membros.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/axolote.jpg",
+  {
+    id: 175,
+    name: "Axolote",
+    scientificName: "Ambystoma mexicanum",
+    description:
+      "Anfíbio neotênico conhecido por manter características larvais na vida adulta, como guelras externas. Pode regenerar membros.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/axolote.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Lagos e canais do México, principalmente Xochimilco",
+    conservationStatus: "Criticamente em perigo (IUCN)",
+    type: "anfíbios",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Lagos e canais do México, principalmente Xochimilco",
-  conservationStatus: "Criticamente em perigo (IUCN)",
-  type: "anfíbios",
-},
-{
-  id: 176,
-  name: "Salamandra-de-costelas-salientes",
-  scientificName: "Pleurodeles waltl",
-  description: "Salamandra aquática que exibe as pontas das costelas como mecanismo de defesa, perfurando a pele com toxinas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-03-at-10.25.08.jpeg",
+  {
+    id: 176,
+    name: "Salamandra-de-costelas-salientes",
+    scientificName: "Pleurodeles waltl",
+    description:
+      "Salamandra aquática que exibe as pontas das costelas como mecanismo de defesa, perfurando a pele com toxinas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-03-at-10.25.08.jpeg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Águas doces e tranquilas da Península Ibérica e Marrocos",
+    conservationStatus: "Quase ameaçada (IUCN)",
+    type: "anfíbios",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Águas doces e tranquilas da Península Ibérica e Marrocos",
-  conservationStatus: "Quase ameaçada (IUCN)",
-  type: "anfíbios",
-},
-{
-  id: 177,
-  name: "Aranha-armadeira",
-  scientificName: "Phoneutria nigriventer",
-  description: "Uma das aranhas mais venenosas do mundo, conhecida por seu comportamento agressivo e postura defensiva com as pernas levantadas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/aranha-armadeira.png",
+  {
+    id: 177,
+    name: "Aranha-armadeira",
+    scientificName: "Phoneutria nigriventer",
+    description:
+      "Uma das aranhas mais venenosas do mundo, conhecida por seu comportamento agressivo e postura defensiva com as pernas levantadas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/aranha-armadeira.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais e áreas urbanas do Brasil",
+    conservationStatus: "Não avaliada",
+    type: "artrópodes",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais e áreas urbanas do Brasil",
-  conservationStatus: "Não avaliada",
-  type: "artrópodes",
-},
-{
-  id: 178,
-  name: "Aranha Caranguejeira",
-  scientificName: "Acanthoscurria paulensis",
-  description: "Aranha de grande porte, geralmente dócil, que usa pelos urticantes como defesa e se alimenta de pequenos invertebrados e vertebrados.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/caranguejeira.jpg",
+  {
+    id: 178,
+    name: "Aranha Caranguejeira",
+    scientificName: "Acanthoscurria paulensis",
+    description:
+      "Aranha de grande porte, geralmente dócil, que usa pelos urticantes como defesa e se alimenta de pequenos invertebrados e vertebrados.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/caranguejeira.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Regiões de cerrado e florestas do Brasil",
+    conservationStatus: "Não avaliada",
+    type: "artrópodes",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Regiões de cerrado e florestas do Brasil",
-  conservationStatus: "Não avaliada",
-  type: "artrópodes",
-},
-{
-  id: 179,
-  name: "Barata Gigante",
-  scientificName: "Blaberus giganteus",
-  description: "Uma das maiores baratas do mundo, inofensiva aos humanos e frequentemente usada em estudos científicos e educação ambiental.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/07/Barata-gigante-768x526.jpg",
+  {
+    id: 179,
+    name: "Barata Gigante",
+    scientificName: "Blaberus giganteus",
+    description:
+      "Uma das maiores baratas do mundo, inofensiva aos humanos e frequentemente usada em estudos científicos e educação ambiental.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/07/Barata-gigante-768x526.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais da América Central e do Sul",
+    conservationStatus: "Não avaliada",
+    type: "artrópodes",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais da América Central e do Sul",
-  conservationStatus: "Não avaliada",
-  type: "artrópodes",
-},
-{
-  id: 180,
-  name: "Escorpião",
-  scientificName: "Tityus fasciolatus",
-  description: "Espécie de escorpião típica do cerrado, com veneno menos potente que outras espécies, mas ainda capaz de causar acidentes.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/escorpiao.jpg",
+  {
+    id: 180,
+    name: "Escorpião",
+    scientificName: "Tityus fasciolatus",
+    description:
+      "Espécie de escorpião típica do cerrado, com veneno menos potente que outras espécies, mas ainda capaz de causar acidentes.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/escorpiao.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Cerrado brasileiro",
+    conservationStatus: "Não avaliada",
+    type: "artrópodes",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Cerrado brasileiro",
-  conservationStatus: "Não avaliada",
-  type: "artrópodes",
-},
-{
-  id: 181,
-  name: "Escorpião-amarelo",
-  scientificName: "Tityus serrulatus",
-  description: "Espécie mais perigosa de escorpião no Brasil, com veneno neurotóxico que pode ser fatal, especialmente em crianças e idosos.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/07/Escorpiao-amarelo.jpg",
+  {
+    id: 181,
+    name: "Escorpião-amarelo",
+    scientificName: "Tityus serrulatus",
+    description:
+      "Espécie mais perigosa de escorpião no Brasil, com veneno neurotóxico que pode ser fatal, especialmente em crianças e idosos.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/07/Escorpiao-amarelo.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Áreas urbanas e rurais do Sudeste e Centro-Oeste do Brasil",
+    conservationStatus: "Não avaliada",
+    type: "artrópodes",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Áreas urbanas e rurais do Sudeste e Centro-Oeste do Brasil",
-  conservationStatus: "Não avaliada",
-  type: "artrópodes",
-},
-{
-  id: 182,
-  name: "Tenébrio Gigante",
-  scientificName: "Zophobas morio",
-  description: "Larva de besouro amplamente utilizada como alimento para répteis e aves em cativeiro, além de ser estudada por sua capacidade de biodegradar plástico.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/tenebrio-gigante.jpg",
+  {
+    id: 182,
+    name: "Tenébrio Gigante",
+    scientificName: "Zophobas morio",
+    description:
+      "Larva de besouro amplamente utilizada como alimento para répteis e aves em cativeiro, além de ser estudada por sua capacidade de biodegradar plástico.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2022/02/tenebrio-gigante.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Ambientes escuros e úmidos; viveiro de criação em cativeiro",
+    conservationStatus: "Não avaliada",
+    type: "artrópodes",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Ambientes escuros e úmidos; viveiro de criação em cativeiro",
-  conservationStatus: "Não avaliada",
-  type: "artrópodes",
-},
 
-
-{
-  id: 183,
-  name: "Borboleta-coruja-brasileira",
-  scientificName: "Caligo brasiliensis",
-  description: "Borboleta noturna com asas que imitam olhos de coruja para afastar predadores.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2024/03/WhatsApp-Image-2024-02-29-at-11.04.31.jpeg",
+  {
+    id: 183,
+    name: "Borboleta-coruja-brasileira",
+    scientificName: "Caligo brasiliensis",
+    description:
+      "Borboleta noturna com asas que imitam olhos de coruja para afastar predadores.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2024/03/WhatsApp-Image-2024-02-29-at-11.04.31.jpeg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais e subtropicais do Brasil",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais e subtropicais do Brasil",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 184,
-  name: "Borboleta-pavão-branco",
-  scientificName: "Anartia jatrophae",
-  description: "Borboleta diurna com padrão branco e manchas que lembram olhos de pavão nas asas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-15-768x628.png",
+  {
+    id: 184,
+    name: "Borboleta-pavão-branco",
+    scientificName: "Anartia jatrophae",
+    description:
+      "Borboleta diurna com padrão branco e manchas que lembram olhos de pavão nas asas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-15-768x628.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Áreas abertas e jardins tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Áreas abertas e jardins tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 185,
-  name: "Borboleta-rabo-de-andorinha",
-  scientificName: "Battus polydamas",
-  description: "Borboleta com cauda nas asas traseiras que lembra a cauda de uma andorinha, comum em áreas tropicais.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-17.png",
+  {
+    id: 185,
+    name: "Borboleta-rabo-de-andorinha",
+    scientificName: "Battus polydamas",
+    description:
+      "Borboleta com cauda nas asas traseiras que lembra a cauda de uma andorinha, comum em áreas tropicais.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-17.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas e áreas abertas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas e áreas abertas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 186,
-  name: "Borboleta-da-couve",
-  scientificName: "Ascia monuste",
-  description: "Pequena borboleta branca comum em plantações de couve e outras crucíferas.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-18.png",
+  {
+    id: 186,
+    name: "Borboleta-da-couve",
+    scientificName: "Ascia monuste",
+    description:
+      "Pequena borboleta branca comum em plantações de couve e outras crucíferas.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-18.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Áreas agrícolas e jardins",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Áreas agrícolas e jardins",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 187,
-  name: "Borboleta-coruja-do-coqueiro",
-  scientificName: "Brassolis sophorae",
-  description: "Borboleta noturna grande, comum em coqueirais, com padrão que lembra olhos na parte superior das asas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-19-768x575.png",
+  {
+    id: 187,
+    name: "Borboleta-coruja-do-coqueiro",
+    scientificName: "Brassolis sophorae",
+    description:
+      "Borboleta noturna grande, comum em coqueirais, com padrão que lembra olhos na parte superior das asas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-19-768x575.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Coqueirais e florestas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Coqueirais e florestas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 188,
-  name: "Borboleta-coruja",
-  scientificName: "Caligo illioneus",
-  description: "Borboleta noturna com asas grandes que simulam olhos de coruja para defesa contra predadores.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-20.png",
+  {
+    id: 188,
+    name: "Borboleta-coruja",
+    scientificName: "Caligo illioneus",
+    description:
+      "Borboleta noturna com asas grandes que simulam olhos de coruja para defesa contra predadores.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/02/image-20.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 189,
-  name: "Borboleta-monarca",
-  scientificName: "Danaus erippus",
-  description: "Famosa por suas migrações, apresenta asas alaranjadas com manchas pretas.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2024/03/image-21-768x521.png",
+  {
+    id: 189,
+    name: "Borboleta-monarca",
+    scientificName: "Danaus erippus",
+    description:
+      "Famosa por suas migrações, apresenta asas alaranjadas com manchas pretas.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2024/03/image-21-768x521.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Campos abertos e áreas agrícolas",
+    conservationStatus: "Pouco preocupante (IUCN)",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Campos abertos e áreas agrícolas",
-  conservationStatus: "Pouco preocupante (IUCN)",
-  type: "borboletas",
-},
-{
-  id: 190,
-  name: "Borboleta-júlia",
-  scientificName: "Dryas iulia",
-  description: "Borboleta com asas laranja brilhante e corpo alongado, comum em áreas tropicais.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-25.png",
+  {
+    id: 190,
+    name: "Borboleta-júlia",
+    scientificName: "Dryas iulia",
+    description:
+      "Borboleta com asas laranja brilhante e corpo alongado, comum em áreas tropicais.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-25.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais e jardins",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais e jardins",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 191,
-  name: "Borboleta-estaladeira-vermelha",
-  scientificName: "Hamadryas amphinome",
-  description: "Borboleta conhecida pelo som que produz ao bater as asas, possui tons avermelhados.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-26-768x576.png",
+  {
+    id: 191,
+    name: "Borboleta-estaladeira-vermelha",
+    scientificName: "Hamadryas amphinome",
+    description:
+      "Borboleta conhecida pelo som que produz ao bater as asas, possui tons avermelhados.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-26-768x576.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 192,
-  name: "Borboleta-estaladeira-cinza",
-  scientificName: "Hamadryas februa",
-  description: "Similar à estaladeira vermelha, porém com coloração cinza nas asas.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-27-300x120.png",
+  {
+    id: 192,
+    name: "Borboleta-estaladeira-cinza",
+    scientificName: "Hamadryas februa",
+    description:
+      "Similar à estaladeira vermelha, porém com coloração cinza nas asas.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-27-300x120.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 193,
-  name: "Borboleta-estaladeira-azul",
-  scientificName: "Hamadryas laudamia",
-  description: "Borboleta com tons azulados nas asas e comportamento semelhante às outras estaladeiras.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2024/03/image-28.png",
+  {
+    id: 193,
+    name: "Borboleta-estaladeira-azul",
+    scientificName: "Hamadryas laudamia",
+    description:
+      "Borboleta com tons azulados nas asas e comportamento semelhante às outras estaladeiras.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2024/03/image-28.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 194,
-  name: "Borboleta-pintada",
-  scientificName: "Heliconius erato",
-  description: "Borboleta conhecida por sua coloração vermelha e preta, comum em florestas tropicais.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/03/Heliconius_besckei_edited.jpg",
+  {
+    id: 194,
+    name: "Borboleta-pintada",
+    scientificName: "Heliconius erato",
+    description:
+      "Borboleta conhecida por sua coloração vermelha e preta, comum em florestas tropicais.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/03/Heliconius_besckei_edited.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais e áreas abertas",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais e áreas abertas",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 195,
-  name: "Borboleta-zebra-azul",
-  scientificName: "Heliconius sara",
-  description: "Borboleta com padrão listrado azul e preto, muito vistosa.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-29-768x509.png",
+  {
+    id: 195,
+    name: "Borboleta-zebra-azul",
+    scientificName: "Heliconius sara",
+    description: "Borboleta com padrão listrado azul e preto, muito vistosa.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-29-768x509.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 196,
-  name: "Borboleta-andorinha-vermelha",
-  scientificName: "Heraclides anchisiades capis",
-  description: "Borboleta com cauda característica, asas vermelhas e pretas.",
-  image: {
-    uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/03/images.jpg",
+  {
+    id: 196,
+    name: "Borboleta-andorinha-vermelha",
+    scientificName: "Heraclides anchisiades capis",
+    description: "Borboleta com cauda característica, asas vermelhas e pretas.",
+    image: {
+      uri: "http://www.zoo.df.gov.br/wp-content/uploads/2025/03/images.jpg",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais e áreas abertas",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais e áreas abertas",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 197,
-  name: "Borboleta-andorinha-grande",
-  scientificName: "Heraclides thoas",
-  description: "Borboleta grande, com cauda pronunciada nas asas traseiras e coloração preta e amarela.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-30.png",
+  {
+    id: 197,
+    name: "Borboleta-andorinha-grande",
+    scientificName: "Heraclides thoas",
+    description:
+      "Borboleta grande, com cauda pronunciada nas asas traseiras e coloração preta e amarela.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-30.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais e áreas abertas",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais e áreas abertas",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 198,
-  name: "Borboleta-tigre",
-  scientificName: "Mechanitis lysimnia",
-  description: "Borboleta com padrão laranja e preto que lembra as listras de um tigre.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-31-768x426.png",
+  {
+    id: 198,
+    name: "Borboleta-tigre",
+    scientificName: "Mechanitis lysimnia",
+    description:
+      "Borboleta com padrão laranja e preto que lembra as listras de um tigre.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-31-768x426.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 199,
-  name: "Borboleta-vítrea",
-  scientificName: "Methona themisto",
-  description: "Borboleta com asas transparentes que a tornam difícil de ser vista por predadores.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-32-768x397.png",
+  {
+    id: 199,
+    name: "Borboleta-vítrea",
+    scientificName: "Methona themisto",
+    description:
+      "Borboleta com asas transparentes que a tornam difícil de ser vista por predadores.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-32-768x397.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Florestas tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Florestas tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
-{
-  id: 200,
-  name: "Borboleta-enxofre-gigante",
-  scientificName: "Phoebis philea",
-  description: "Grande borboleta amarela, comum em áreas abertas e jardins.",
-  image: {
-    uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-33.png",
+  {
+    id: 200,
+    name: "Borboleta-enxofre-gigante",
+    scientificName: "Phoebis philea",
+    description: "Grande borboleta amarela, comum em áreas abertas e jardins.",
+    image: {
+      uri: "https://www.zoo.df.gov.br/wp-content/uploads/2025/03/image-33.png",
+    },
+    credit: "Foto: Zoologico de Brasilia",
+    habitat: "Áreas abertas e jardins tropicais",
+    conservationStatus: "Não avaliada",
+    type: "borboletas",
   },
-  credit: "Foto: Zoologico de Brasilia",
-  habitat: "Áreas abertas e jardins tropicais",
-  conservationStatus: "Não avaliada",
-  type: "borboletas",
-},
 ];
 
 const animalTypes = [
@@ -2760,6 +2810,16 @@ const animalTypes = [
   { label: "Anfíbios", value: "anfíbios" },
   { label: "Borboletário", value: "borboletas" },
 ];
+
+const LeafIcon = styled(Ionicons)`
+  margin: 0 5px;
+  margin-top: ${['ios', 'android'].includes(Platform.OS) ? 160 : 120}px;
+  
+`;
+
+const AnimalIcon = styled(Ionicons)`
+  opacity: 0.7;
+`;
 
 const AnimalCard = ({ item }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -2851,11 +2911,15 @@ const ZooAnimalsScreen = () => {
         renderItem={({ item }) => <AnimalCard item={item} />}
         keyExtractor={(item) => item.id.toString()}
         numColumns={Platform.select({ web: 2, default: 1 })}
+
         ListHeaderComponent={
+
           <View style={styles.listHeader}>
-            <Text style={styles.headerTitle}>
-              Animais do Zoológico de Brasília
-            </Text>
+            <View style={styles.titleContainer}>
+              <Text style={styles.headerTitle}>
+                Animais do Zoológico de Brasília
+              </Text>
+            </View>
 
             <View style={styles.filterContainer}>
               {animalTypes.map(({ label, value }) => (
@@ -2931,12 +2995,12 @@ const styles = StyleSheet.create({
     }),
   },
   headerTitle: {
-
     fontSize: 32,
     fontWeight: "900",
     textAlign: "center",
     marginVertical: 20,
-    color: "#2e7d32", 
+    marginHorizontal:6,
+    color: "#2e7d32",
     paddingTop: Platform.OS === "ios" ? 160 : 120,
     letterSpacing: 1.2,
     fontFamily: Platform.OS === "ios" ? "Georgia" : "serif",
@@ -3011,8 +3075,13 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#2d5e2d",
     marginBottom: 4,
-    
   },
+  titleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   scientificName: {
     fontSize: 16,
     fontStyle: "italic",
